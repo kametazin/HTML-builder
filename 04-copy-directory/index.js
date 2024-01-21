@@ -23,4 +23,4 @@ async function copyDir() {
   }
 }
 
-copyDir();  
+copyDir();
