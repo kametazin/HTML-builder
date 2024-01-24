@@ -15,8 +15,6 @@ async function readSecretFolder() {
       const fileSizeKB = (fileStats.size / 1024).toFixed(3);
 
       console.log(`${file.name} - ${fileExtension} - ${fileSizeKB}kb`);
-    } else {
-    console.error(`Error: ${file.name} is not a file`);
     }
   }
   } catch (error) {
