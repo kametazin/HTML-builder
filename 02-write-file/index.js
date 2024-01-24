@@ -21,7 +21,7 @@ rl.on('line', (input) => {
 });
 rl.prompt();
 
-process.on('SIGINT', () => {
+rl.on('SIGINT', () => {
   handleExit();
 });
 
@@ -31,3 +31,7 @@ function handleExit() {
   writeStream.close();
   process.exit();
 }
+
+process.on('exit', () => {
+  console.log('process is terminated');
+});
