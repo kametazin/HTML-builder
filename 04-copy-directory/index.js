@@ -16,7 +16,15 @@ async function copyDir() {
 
       await fs.copyFile(sourceFilePath, destinationFilePath);
     }
+    const existingFiles = new Set(files);
 
+    const filesInDestination = await fs.readdir(destinationPath);
+    for (const fileInDestination of filesInDestination) {
+      if (!existingFiles.has(fileInDestination)) {
+        const filePathToRemove = path.join(destinationPath, fileInDestination);
+        await fs.unlink(filePathToRemove);
+      }
+    }
     console.log('Copy is finished');
   } catch (error) {
     console.error('Error:', error.message);
